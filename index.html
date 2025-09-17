@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ithraa Alkhair Platform</title>
-    <link rel="icon" type="image/png" href="assets/icon.png">
+    <link rel="icon" type="image/png" href="https://ithraahousing.k.frappe.cloud/files/icon.png">
     <style>
         * {
             margin: 0;
@@ -153,6 +153,8 @@
             border-radius: 3px;
             cursor: pointer;
             transition: transform 0.2s;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .flag:hover {
@@ -249,7 +251,7 @@
             border-radius: 12px 12px 0 0;
             font-weight: 600;
             font-size: 16px;
-            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 2px 10px rgba(0, 181, 164, 0.2);
         }
 
         .form-row {
@@ -285,8 +287,8 @@
 
         .form-input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #00B5A4;
+            box-shadow: 0 0 0 3px rgba(0, 181, 164, 0.1);
         }
 
         .form-textarea {
@@ -304,7 +306,7 @@
         .checkbox {
             width: 18px;
             height: 18px;
-            accent-color: #667eea;
+            accent-color: #00B5A4;
         }
 
         .btn {
@@ -376,7 +378,7 @@
 
         .search-input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #00B5A4;
             background: white;
         }
 
@@ -404,6 +406,7 @@
             user-select: none;
             position: relative;
             box-shadow: 0 2px 4px rgba(0, 128, 134, 0.2);
+            transition: all 0.3s ease;
         }
 
         .table th:hover {
@@ -525,7 +528,7 @@
         .pagination-btn:hover:not(:disabled) {
             background: #008086;
             color: white;
-            border-color: #667eea;
+            border-color: #00B5A4;
         }
 
         .pagination-btn:disabled {
@@ -563,6 +566,8 @@
             .sidebar {
                 transform: translateX(-100%);
                 transition: transform 0.3s ease;
+                z-index: 999;
+                background: white;
             }
 
             .sidebar.open {
@@ -662,7 +667,7 @@
             width: 20px;
             height: 20px;
             border: 2px solid #f3f3f3;
-            border-top: 2px solid #667eea;
+            border-top: 2px solid #00B5A4;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             display: inline-block;
@@ -688,7 +693,7 @@
             padding: 16px 20px;
             margin-bottom: 10px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #00B5A4;
             transform: translateX(400px);
             transition: transform 0.3s ease;
             min-width: 300px;
@@ -788,8 +793,8 @@
         }
 
         .table tbody tr.selected {
-            background: rgba(102, 126, 234, 0.1);
-            border-left: 3px solid #667eea;
+            background: rgba(0, 181, 164, 0.1);
+            border-left: 3px solid #00B5A4;
         }
 
         /* Enhanced Buttons */
@@ -960,14 +965,14 @@
         .pagination-btn:hover:not(:disabled) {
             background: #008086;
             color: white;
-            border-color: #667eea;
+            border-color: #00B5A4;
             transform: translateY(-1px);
         }
 
         .pagination-btn.active {
-            background: #667eea;
+            background: #00B5A4;
             color: white;
-            border-color: #667eea;
+            border-color: #00B5A4;
         }
 
         /* Export Button */
@@ -1085,7 +1090,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #00B5A4, #008086);
         }
 
         .offer-header {
@@ -1096,7 +1101,7 @@
         }
 
         .offer-category {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #00B5A4, #008086);
             color: white;
             padding: 6px 12px;
             border-radius: 20px;
@@ -1258,9 +1263,9 @@
         }
 
         .filter-btn.active {
-            background: #667eea;
+            background: #00B5A4;
             color: white;
-            border-color: #667eea;
+            border-color: #00B5A4;
         }
 
         .filter-btn:hover:not(.active) {
@@ -1354,7 +1359,7 @@
     <div class="header">
         <div class="header-left">
             <div class="logo">
-                <img src="assets/icon.png" alt="Ithraa Alkhair Logo">
+                <img src="https://ithraahousing.k.frappe.cloud/files/icon.png" alt="Ithraa Alkhair Logo">
             </div>
             <button class="mobile-menu-btn" onclick="toggleSidebar()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1365,9 +1370,9 @@
             </button>
         </div>
         <div class="header-right">
-            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjRkYwMDAwIi8+Cjx0ZXh0IHg9IjE1IiB5PSIxNCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SUQ8L3RleHQ+Cjwvc3ZnPgo=" class="flag" onclick="setLanguage('id')" title="Indonesian">
-            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjMDAyMzk1Ii8+CjxyZWN0IHdpZHRoPSIzMCIgaGVpZ2h0PSI2LjY3IiBmaWxsPSIjRkZGMDAwIi8+CjxyZWN0IHk9IjEzLjMzIiB3aWR0aD0iMzAiIGhlaWdodD0iNi42NyIgZmlsbD0iI0ZGRjAwMCIvPgo8L3N2Zz4K" class="flag" onclick="setLanguage('en')" title="English">
-            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjMDA2QzAwIi8+Cjx0ZXh0IHg9IjE1IiB5PSIxNCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U0E8L3RleHQ+Cjwvc3ZnPgo=" class="flag" onclick="setLanguage('ar')" title="Arabic">
+            <img src="https://ithraahousing.k.frappe.cloud/files/indonesia-flag.png" class="flag" onclick="setLanguage('id')" title="Indonesian">
+            <img src="https://ithraahousing.k.frappe.cloud/files/united-states.png" class="flag" onclick="setLanguage('en')" title="English">
+            <img src="https://ithraahousing.k.frappe.cloud/files/saudi-arabia.png" class="flag" onclick="setLanguage('ar')" title="Arabic">
         </div>
     </div>
 
@@ -1497,8 +1502,8 @@
                 </div>
             </div>
 
-            <!-- Main Services -->
-            <div class="form-section">
+            <!-- Main Services Section -->
+            <div class="form-section" id="main-services-section">
                 <div class="section-header" data-translate="main_services">Main Services</div>
                 <div class="form-row">
                     <div class="form-group">
@@ -1514,6 +1519,33 @@
                     <div class="form-group">
                         <label class="form-label" data-translate="price_offered">Main Service Price Offered</label>
                         <input type="number" class="form-input" value="222">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Services Section -->
+            <div class="form-section" id="additional-services-section" style="display: none;">
+                <div class="section-header" data-translate="additional_services">Additional Services</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Additional Service Type</label>
+                        <select class="form-input">
+                            <option value="">Select Service Type</option>
+                            <option value="transportation">Transportation</option>
+                            <option value="medical">Medical Services</option>
+                            <option value="security">Security Services</option>
+                            <option value="logistics">Logistics Support</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Service Capacity</label>
+                        <input type="number" class="form-input" placeholder="Enter capacity">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Service Description</label>
+                        <textarea class="form-textarea" placeholder="Describe the additional service"></textarea>
                     </div>
                 </div>
             </div>
@@ -1908,6 +1940,9 @@
                 populateOffersCards();
             } else if (pageName === 'terms') {
                 populateTable('terms-table');
+            } else if (pageName === 'profile') {
+                // Setup checkboxes when profile page is shown
+                setTimeout(setupServiceCheckboxes, 50);
             }
         }
 
@@ -2493,7 +2528,7 @@
             });
             
             // Add selection to clicked card
-            card.style.border = '2px solid #667eea';
+            card.style.border = '2px solid #00B5A4';
         }
 
         function viewOfferDetails(registrationId) {
@@ -2593,8 +2628,61 @@
             }
         }
 
+        // Checkbox functionality for services sections
+        function setupServiceCheckboxes() {
+            console.log('Setting up service checkboxes...');
+            
+            const mainServicesCheckbox = document.getElementById('main-services');
+            const additionalServicesCheckbox = document.getElementById('additional-services');
+            const mainServicesSection = document.getElementById('main-services-section');
+            const additionalServicesSection = document.getElementById('additional-services-section');
+
+            console.log('Main Services Checkbox:', mainServicesCheckbox);
+            console.log('Main Services Section:', mainServicesSection);
+            console.log('Additional Services Checkbox:', additionalServicesCheckbox);
+            console.log('Additional Services Section:', additionalServicesSection);
+
+            // Main Services checkbox
+            if (mainServicesCheckbox && mainServicesSection) {
+                console.log('Adding Main Services event listener');
+                mainServicesCheckbox.addEventListener('change', function() {
+                    console.log('Main Services checkbox changed:', this.checked);
+                    if (this.checked) {
+                        mainServicesSection.style.display = 'block';
+                        console.log('Showing Main Services section');
+                    } else {
+                        mainServicesSection.style.display = 'none';
+                        console.log('Hiding Main Services section');
+                    }
+                });
+            } else {
+                console.log('Main Services elements not found');
+            }
+
+            // Additional Services checkbox
+            if (additionalServicesCheckbox && additionalServicesSection) {
+                console.log('Adding Additional Services event listener');
+                additionalServicesCheckbox.addEventListener('change', function() {
+                    console.log('Additional Services checkbox changed:', this.checked);
+                    if (this.checked) {
+                        additionalServicesSection.style.display = 'block';
+                        console.log('Showing Additional Services section');
+                    } else {
+                        additionalServicesSection.style.display = 'none';
+                        console.log('Hiding Additional Services section');
+                    }
+                });
+            } else {
+                console.log('Additional Services elements not found');
+            }
+        }
+
         // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', function() {
+            init();
+            // Setup checkboxes with a small delay to ensure DOM is ready
+            setTimeout(setupServiceCheckboxes, 100);
+        });
     </script>
 </body>
 </html>
