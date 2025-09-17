@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Hajj Demo Platform</title>
+    <title>Login - Ithraa Alkhair Platform</title>
+    <link rel="icon" type="image/png" href="../assets/icon.png">
     <style>
         * {
             margin: 0;
@@ -11,14 +12,94 @@
             box-sizing: border-box;
         }
 
+        @font-face {
+            font-family: 'CodecPro';
+            src: url('../Fonts/CodecPro.zip') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'FFShamel';
+            src: url('../Fonts/ArbFONTS-FFShamelFamily-SansOneBook.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'FFShamel';
+            src: url('../Fonts/ArbFONTS-FFShamelFamily-SansOneBold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'CodecPro', 'FFShamel', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #008086 0%, #00B5A4 100%);
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(135deg, #008086, #00B5A4);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 128, 134, 0.3);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 128, 134, 0.3);
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .flag {
+            width: 30px;
+            height: 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .flag:hover {
+            transform: scale(1.1);
         }
 
         .login-container {
@@ -27,9 +108,10 @@
             padding: 40px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.2);
             width: 100%;
-            max-width: 400px;
+            max-width: 600px;
             position: relative;
             overflow: hidden;
+            margin-top: 80px;
         }
 
         .login-container::before {
@@ -39,7 +121,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #008086, #00B5A4);
         }
 
         .logo-section {
@@ -48,30 +130,43 @@
         }
 
         .logo {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #11998e, #38ef7d);
-            border-radius: 15px;
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
             margin: 0 auto 15px;
-            box-shadow: 0 8px 25px rgba(17, 153, 142, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 128, 134, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            position: relative;
+            z-index: 1;
+            font-size: 20px;
+            font-weight: 800;
         }
 
         .login-title {
             font-size: 28px;
             font-weight: 700;
-            color: #2d3748;
+            color: #008086;
             margin-bottom: 8px;
         }
 
         .login-subtitle {
-            color: #718096;
+            color: #00B5A4;
             font-size: 14px;
+            font-weight: 500;
         }
 
         .form-group {
@@ -81,7 +176,7 @@
         .form-label {
             display: block;
             font-weight: 600;
-            color: #4a5568;
+            color: #008086;
             margin-bottom: 8px;
             font-size: 14px;
         }
@@ -98,9 +193,9 @@
 
         .form-input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #00B5A4;
             background: white;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 3px rgba(0, 181, 164, 0.1);
         }
 
         .form-input.error {
@@ -118,7 +213,7 @@
         .login-btn {
             width: 100%;
             padding: 15px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #008086, #00B5A4);
             color: white;
             border: none;
             border-radius: 12px;
@@ -133,7 +228,7 @@
 
         .login-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 128, 134, 0.4);
         }
 
         .login-btn:active {
@@ -206,11 +301,225 @@
             margin-top: 20px;
         }
 
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .switch-link {
+            color: #00B5A4;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .switch-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Form Sections */
+        .form-section {
+            position: relative;
+        }
+
+        .form-section.hidden {
+            display: none;
+        }
+
+        /* Registration Steps */
+        .registration-step {
+            position: relative;
+        }
+
+        .registration-step.hidden {
+            display: none;
+        }
+
+        /* Service Selection */
+        .service-selection {
+            margin: 20px 0;
+        }
+
+        .selection-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+
+        .service-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .service-option {
+            background: #f8f9fa;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-option:hover {
+            border-color: #00B5A4;
+            background: rgba(0, 181, 164, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .service-option.selected {
+            border-color: #00B5A4;
+            background: linear-gradient(135deg, #008086, #00B5A4);
+            color: white;
+        }
+
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #008086;
+        }
+
+        .service-option.selected .service-icon svg {
+            color: white;
+        }
+
+        .service-option h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .service-option p {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* Registration Forms */
+        .registration-form {
+            margin-top: 20px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-step {
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* File Input Styling */
+        .file-input {
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border: 2px dashed #cbd5e0;
+            cursor: pointer;
+        }
+
+        .file-input:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .file-info {
+            font-size: 11px;
+            color: #718096;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* Back Button */
+        .back-btn {
+            background: #f7fafc;
+            color: #008086;
+            border: 1px solid #e2e8f0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 181, 164, 0.1);
+            border-color: #00B5A4;
+            color: #00B5A4;
+        }
+
         .demo-title {
             font-size: 14px;
             font-weight: 600;
             color: #4a5568;
             margin-bottom: 8px;
+        }
+
+        /* RTL Support */
+        body.rtl {
+            direction: rtl;
+        }
+
+        body.rtl .header {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .header-left {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .header-right {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .form-row {
+            direction: rtl;
+        }
+
+        body.rtl .form-group {
+            text-align: right;
+        }
+
+        body.rtl .form-input {
+            text-align: right;
+        }
+
+        body.rtl .service-options {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .service-option {
+            text-align: right;
+        }
+
+        body.rtl .back-btn {
+            text-align: right;
         }
 
         .demo-info {
@@ -251,7 +560,7 @@
         }
 
         .toast.success {
-            border-left-color: #48bb78;
+            border-left-color: #00B5A4;
         }
 
         .toast.error {
@@ -271,7 +580,7 @@
         }
 
         .toast.success .toast-icon {
-            background: #48bb78;
+            background: #00B5A4;
         }
 
         .toast.error .toast-icon {
@@ -321,6 +630,24 @@
 
             .demo-credentials {
                 padding: 12px;
+            }
+
+            .service-options {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .service-option {
+                padding: 15px;
+            }
+
+            .service-icon {
+                font-size: 24px;
+            }
+
+            .service-icon svg {
+                width: 24px;
+                height: 24px;
             }
         }
 
@@ -385,47 +712,269 @@
     <!-- Toast Container -->
     <div class="toast-container" id="toast-container"></div>
 
-    <div class="login-container">
-        <div class="logo-section">
-            <div class="logo">H</div>
-            <h1 class="login-title">Welcome Back</h1>
-            <p class="login-subtitle">Sign in to your Hajj Demo account</p>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <div class="logo">
+                <img src="../assets/icon.png" alt="Ithraa Alkhair Logo">
+            </div>
         </div>
-
-        <form id="login-form">
-            <div class="form-group">
-                <label class="form-label" for="email">Email Address</label>
-                <input type="email" class="form-input" id="email" placeholder="Enter your email" required>
-                <div class="error-message" id="email-error"></div>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label" for="password">Password</label>
-                <input type="password" class="form-input" id="password" placeholder="Enter your password" required>
-                <div class="error-message" id="password-error"></div>
-            </div>
-
-            <div class="remember-forgot">
-                <div class="checkbox-group">
-                    <input type="checkbox" class="checkbox" id="remember">
-                    <label for="remember" class="checkbox-label">Remember me</label>
-                </div>
-                <a href="#" class="forgot-link" onclick="showForgotPassword()">Forgot Password?</a>
-            </div>
-
-            <button type="submit" class="login-btn" id="login-btn">
-                Sign In
-            </button>
-        </form>
-
-        <div class="demo-credentials">
-            <div class="demo-title">Demo Credentials</div>
-            <div class="demo-info">
-                <strong>Email:</strong> admin@hajjdemo.com<br>
-                <strong>Password:</strong> demo123
-            </div>
+        <div class="header-right">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjRkYwMDAwIi8+Cjx0ZXh0IHg9IjE1IiB5PSIxNCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SUQ8L3RleHQ+Cjwvc3ZnPgo=" class="flag" onclick="setLanguage('id')" title="Indonesian">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjMDAyMzk1Ii8+CjxyZWN0IHdpZHRoPSIzMCIgaGVpZ2h0PSI2LjY3IiBmaWxsPSIjRkZGMDAwIi8+CjxyZWN0IHk9IjEzLjMzIiB3aWR0aD0iMzAiIGhlaWdodD0iNi42NyIgZmlsbD0iI0ZGRjAwMCIvPgo8L3N2Zz4K" class="flag" onclick="setLanguage('en')" title="English">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjMDA3MzAwIi8+Cjx0ZXh0IHg9IjE1IiB5PSIxNCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QnzwvdGV4dD4KPC9zdmc+Cg==" class="flag" onclick="setLanguage('ar')" title="Arabic">
         </div>
     </div>
+
+        <div class="login-container">
+            <!-- Login Form -->
+            <div class="form-section" id="login-section">
+                <div class="logo-section">
+                    <div class="logo">
+                        <img src="../assets/icon.png" alt="Ithraa Alkhair Logo">
+                    </div>
+                    <h1 class="login-title">ITHRAA ALKHAIR</h1>
+                    <p class="login-subtitle">Welcome back to your account</p>
+                </div>
+
+                <form id="login-form">
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" class="form-input" id="email" placeholder="Enter your email" required>
+                        <div class="error-message" id="email-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" class="form-input" id="password" placeholder="Enter your password" required>
+                        <div class="error-message" id="password-error"></div>
+                    </div>
+
+                    <div class="remember-forgot">
+                        <div class="checkbox-group">
+                            <input type="checkbox" class="checkbox" id="remember">
+                            <label for="remember" class="checkbox-label">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-link" onclick="showForgotPassword()">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="login-btn" id="login-btn">
+                        Sign In
+                    </button>
+                </form>
+
+                <div class="demo-credentials">
+                    <div class="demo-title">Demo Credentials</div>
+                    <div class="demo-info">
+                        <strong>Email:</strong> admin@hajjdemo.com<br>
+                        <strong>Password:</strong> demo123
+                    </div>
+                </div>
+
+                <div class="auth-switch">
+                    <p>Don't have an account? <a href="#" onclick="showRegister()" class="switch-link">Register here</a></p>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="form-section hidden" id="register-section">
+                <!-- Service Selection Step -->
+                <div class="registration-step" id="service-selection-step">
+                    <div class="logo-section">
+                        <div class="logo">
+                            <img src="../assets/icon.png" alt="Ithraa Alkhair Logo">
+                        </div>
+                        <h1 class="login-title">ITHRAA ALKHAIR</h1>
+                        <p class="login-subtitle">Join our platform</p>
+                    </div>
+
+                    <div class="service-selection">
+                        <h3 class="selection-title">Select Your Service Type</h3>
+                        <div class="service-options">
+                            <div class="service-option" onclick="selectService('katering')">
+                                <div class="service-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 2v7c0 1.1.9 2 2 2h4v11a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V11h4c1.1 0 2-.9 2-2V2H3z"/>
+                                        <path d="M8 7h8"/>
+                                        <path d="M8 11h8"/>
+                                    </svg>
+                                </div>
+                                <h4>KATERING</h4>
+                                <p>Food and catering services</p>
+                            </div>
+                            <div class="service-option" onclick="selectService('housing')">
+                                <div class="service-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                        <polyline points="9,22 9,12 15,12 15,22"/>
+                                    </svg>
+                                </div>
+                                <h4>HOUSING</h4>
+                                <p>Accommodation services</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="auth-switch">
+                        <p>Already have an account? <a href="#" onclick="showLogin()" class="switch-link">Sign in here</a></p>
+                    </div>
+                </div>
+
+                <!-- KATERING Registration Form Step -->
+                <div class="registration-step hidden" id="katering-form-step">
+                    <div class="logo-section">
+                        <div class="logo">
+                            <img src="../assets/icon.png" alt="Ithraa Alkhair Logo">
+                        </div>
+                        <h1 class="login-title">KATERING Registration</h1>
+                        <p class="login-subtitle">Complete your catering service registration</p>
+                    </div>
+
+                    <button class="back-btn" onclick="goBackToServiceSelection()">← Back to Service Selection</button>
+
+                    <form id="katering-form" class="registration-form">
+                        <div class="form-step">
+                            <div class="form-group">
+                                <label class="form-label" for="katering-name">Name of Company Owner/Director/Head *</label>
+                                <input type="text" class="form-input" id="katering-name" placeholder="Enter full name" required>
+                                <div class="error-message" id="katering-name-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="katering-id">Valid ID Card Number *</label>
+                                <input type="text" class="form-input" id="katering-id" placeholder="Enter ID card number" required>
+                                <div class="error-message" id="katering-id-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="katering-job">Job Title *</label>
+                                <input type="text" class="form-input" id="katering-job" placeholder="Enter job title" required>
+                                <div class="error-message" id="katering-job-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="katering-email">Email Address *</label>
+                                <input type="email" class="form-input" id="katering-email" placeholder="Enter email address" required>
+                                <div class="error-message" id="katering-email-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="katering-phone">Cellphone Number *</label>
+                                <input type="tel" class="form-input" id="katering-phone" placeholder="+966 50 123 4567" required>
+                                <div class="error-message" id="katering-phone-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Select Service Area *</label>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" class="checkbox" id="katering-messa">
+                                    <label for="katering-messa" class="checkbox-label">Messa</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" class="checkbox" id="katering-madina">
+                                    <label for="katering-madina" class="checkbox-label">Madina</label>
+                                </div>
+                                <div class="error-message" id="katering-area-error"></div>
+                            </div>
+
+                            <button type="submit" class="login-btn" id="katering-submit">
+                                Register for KATERING
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Housing Registration Form Step -->
+                <div class="registration-step hidden" id="housing-form-step">
+                    <div class="logo-section">
+                        <div class="logo">
+                            <img src="../assets/icon.png" alt="Ithraa Alkhair Logo">
+                        </div>
+                        <h1 class="login-title">Housing Registration</h1>
+                        <p class="login-subtitle">Complete your accommodation service registration</p>
+                    </div>
+
+                    <button class="back-btn" onclick="goBackToServiceSelection()">← Back to Service Selection</button>
+
+                    <form id="housing-form" class="registration-form">
+                        <div class="form-step">
+                            <div class="form-group">
+                                <label class="form-label" for="housing-name">Register Name *</label>
+                                <input type="text" class="form-input" id="housing-name" placeholder="Enter register name" required>
+                                <div class="error-message" id="housing-name-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="housing-job">Job Title *</label>
+                                <input type="text" class="form-input" id="housing-job" placeholder="Enter job title" required>
+                                <div class="error-message" id="housing-job-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="housing-company">Company Name *</label>
+                                <input type="text" class="form-input" id="housing-company" placeholder="Enter company name" required>
+                                <div class="error-message" id="housing-company-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="housing-license">Business License Number (السجل التجاري) *</label>
+                                <input type="text" class="form-input" id="housing-license" placeholder="Enter business license number" required>
+                                <div class="error-message" id="housing-license-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="housing-cert-number">Company Registration Certificate Number *</label>
+                                <input type="text" class="form-input" id="housing-cert-number" placeholder="Enter certificate number" required>
+                                <div class="error-message" id="housing-cert-number-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="housing-cert-date">Company Registration Certificate Date *</label>
+                                <input type="date" class="form-input" id="housing-cert-date" required>
+                                <div class="error-message" id="housing-cert-date-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="housing-email">Email Registrant *</label>
+                                <input type="email" class="form-input" id="housing-email" placeholder="Enter email address" required>
+                                <div class="error-message" id="housing-email-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="housing-phone">Cellphone Number *</label>
+                                <input type="tel" class="form-input" id="housing-phone" placeholder="+966 50 123 4567" required>
+                                <div class="error-message" id="housing-phone-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="housing-business-license">Business License *</label>
+                                <input type="file" class="form-input file-input" id="housing-business-license" accept=".pdf" required>
+                                <div class="file-info">PDF files only, max 20MB</div>
+                                <div class="error-message" id="housing-business-license-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="housing-registration-cert">Company Registration Certificate *</label>
+                                <input type="file" class="form-input file-input" id="housing-registration-cert" accept=".pdf" required>
+                                <div class="file-info">PDF files only, max 20MB</div>
+                                <div class="error-message" id="housing-registration-cert-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="housing-profile">Company Profile *</label>
+                                <input type="file" class="form-input file-input" id="housing-profile" accept=".pdf" required>
+                                <div class="file-info">PDF files only, max 20MB</div>
+                                <div class="error-message" id="housing-profile-error"></div>
+                            </div>
+
+                            <button type="submit" class="login-btn" id="housing-submit">
+                                Register for Housing
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
     <script>
         // Toast Notification System
@@ -553,9 +1102,353 @@
             clearFieldError('password');
         });
 
+        // Registration System
+        let selectedService = null;
+
+        function showRegister() {
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('register-section').classList.remove('hidden');
+            showToast('Select your service type to continue', 'info', 3000);
+        }
+
+        function showLogin() {
+            document.getElementById('register-section').classList.add('hidden');
+            document.getElementById('login-section').classList.remove('hidden');
+            resetRegistration();
+        }
+
+        function selectService(service) {
+            selectedService = service;
+            
+            // Update UI
+            document.querySelectorAll('.service-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.service-option').classList.add('selected');
+            
+            // Hide service selection step
+            document.getElementById('service-selection-step').classList.add('hidden');
+            
+            // Show appropriate form step
+            if (service === 'katering') {
+                document.getElementById('katering-form-step').classList.remove('hidden');
+            } else if (service === 'housing') {
+                document.getElementById('housing-form-step').classList.remove('hidden');
+            }
+            
+            showToast(`${service.toUpperCase()} registration form loaded`, 'success', 2000);
+        }
+
+        function goBackToServiceSelection() {
+            // Hide current form steps
+            document.getElementById('katering-form-step').classList.add('hidden');
+            document.getElementById('housing-form-step').classList.add('hidden');
+            
+            // Show service selection step
+            document.getElementById('service-selection-step').classList.remove('hidden');
+            
+            // Clear form data
+            document.querySelectorAll('#register-section input, #register-section select, #register-section textarea').forEach(field => {
+                if (field.type === 'checkbox') {
+                    field.checked = false;
+                } else {
+                    field.value = '';
+                }
+            });
+            
+            // Clear errors
+            document.querySelectorAll('#register-section .error-message').forEach(error => {
+                error.style.display = 'none';
+            });
+            
+            // Reset service selection
+            document.querySelectorAll('.service-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            selectedService = null;
+            showToast('Select your service type', 'info', 2000);
+        }
+
+        function resetRegistration() {
+            selectedService = null;
+            
+            // Show service selection step and hide form steps
+            document.getElementById('service-selection-step').classList.remove('hidden');
+            document.getElementById('katering-form-step').classList.add('hidden');
+            document.getElementById('housing-form-step').classList.add('hidden');
+            
+            // Clear all form data
+            document.querySelectorAll('#register-section input, #register-section select, #register-section textarea').forEach(field => {
+                if (field.type === 'checkbox') {
+                    field.checked = false;
+                } else {
+                    field.value = '';
+                }
+            });
+            
+            // Clear errors
+            document.querySelectorAll('#register-section .error-message').forEach(error => {
+                error.style.display = 'none';
+            });
+            
+            // Reset service selection
+            document.querySelectorAll('.service-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+        }
+
+        // KATERING Form Handler
+        document.getElementById('katering-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('katering-name').value.trim(),
+                id: document.getElementById('katering-id').value.trim(),
+                job: document.getElementById('katering-job').value.trim(),
+                email: document.getElementById('katering-email').value.trim(),
+                phone: document.getElementById('katering-phone').value.trim(),
+                messa: document.getElementById('katering-messa').checked,
+                madina: document.getElementById('katering-madina').checked
+            };
+            
+            // Validate form
+            if (validateKateringForm(formData)) {
+                submitKateringRegistration(formData);
+            }
+        });
+
+        // Housing Form Handler
+        document.getElementById('housing-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('housing-name').value.trim(),
+                job: document.getElementById('housing-job').value.trim(),
+                company: document.getElementById('housing-company').value.trim(),
+                license: document.getElementById('housing-license').value.trim(),
+                certNumber: document.getElementById('housing-cert-number').value.trim(),
+                certDate: document.getElementById('housing-cert-date').value,
+                email: document.getElementById('housing-email').value.trim(),
+                phone: document.getElementById('housing-phone').value.trim(),
+                businessLicense: document.getElementById('housing-business-license').files[0],
+                registrationCert: document.getElementById('housing-registration-cert').files[0],
+                profile: document.getElementById('housing-profile').files[0]
+            };
+            
+            // Validate form
+            if (validateHousingForm(formData)) {
+                submitHousingRegistration(formData);
+            }
+        });
+
+        function validateKateringForm(data) {
+            let isValid = true;
+            
+            // Clear previous errors
+            clearFormErrors('katering');
+            
+            if (!data.name) {
+                showFieldError('katering-name', 'Name is required');
+                isValid = false;
+            }
+            
+            if (!data.id) {
+                showFieldError('katering-id', 'ID card number is required');
+                isValid = false;
+            }
+            
+            if (!data.job) {
+                showFieldError('katering-job', 'Job title is required');
+                isValid = false;
+            }
+            
+            if (!data.email || !validateEmail(data.email)) {
+                showFieldError('katering-email', 'Valid email is required');
+                isValid = false;
+            }
+            
+            if (!data.phone || !validatePhone(data.phone)) {
+                showFieldError('katering-phone', 'Valid phone number is required');
+                isValid = false;
+            }
+            
+            if (!data.messa && !data.madina) {
+                showFieldError('katering-area', 'Please select at least one service area');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        function validateHousingForm(data) {
+            let isValid = true;
+            
+            // Clear previous errors
+            clearFormErrors('housing');
+            
+            if (!data.name) {
+                showFieldError('housing-name', 'Register name is required');
+                isValid = false;
+            }
+            
+            if (!data.job) {
+                showFieldError('housing-job', 'Job title is required');
+                isValid = false;
+            }
+            
+            if (!data.company) {
+                showFieldError('housing-company', 'Company name is required');
+                isValid = false;
+            }
+            
+            if (!data.license) {
+                showFieldError('housing-license', 'Business license number is required');
+                isValid = false;
+            }
+            
+            if (!data.certNumber) {
+                showFieldError('housing-cert-number', 'Certificate number is required');
+                isValid = false;
+            }
+            
+            if (!data.certDate) {
+                showFieldError('housing-cert-date', 'Certificate date is required');
+                isValid = false;
+            }
+            
+            if (!data.email || !validateEmail(data.email)) {
+                showFieldError('housing-email', 'Valid email is required');
+                isValid = false;
+            }
+            
+            if (!data.phone || !validatePhone(data.phone)) {
+                showFieldError('housing-phone', 'Valid phone number is required');
+                isValid = false;
+            }
+            
+            // Validate file uploads
+            if (!data.businessLicense) {
+                showFieldError('housing-business-license', 'Business license file is required');
+                isValid = false;
+            } else if (!validateFile(data.businessLicense)) {
+                showFieldError('housing-business-license', 'Please upload a valid PDF file (max 20MB)');
+                isValid = false;
+            }
+            
+            if (!data.registrationCert) {
+                showFieldError('housing-registration-cert', 'Registration certificate file is required');
+                isValid = false;
+            } else if (!validateFile(data.registrationCert)) {
+                showFieldError('housing-registration-cert', 'Please upload a valid PDF file (max 20MB)');
+                isValid = false;
+            }
+            
+            if (!data.profile) {
+                showFieldError('housing-profile', 'Company profile file is required');
+                isValid = false;
+            } else if (!validateFile(data.profile)) {
+                showFieldError('housing-profile', 'Please upload a valid PDF file (max 20MB)');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        function validateFile(file) {
+            const maxSize = 20 * 1024 * 1024; // 20MB
+            return file.type === 'application/pdf' && file.size <= maxSize;
+        }
+
+        function validatePhone(phone) {
+            return /^\+966\s?\d{2}\s?\d{3}\s?\d{4}$/.test(phone.replace(/\s/g, ''));
+        }
+
+        function clearFormErrors(prefix) {
+            document.querySelectorAll(`#${prefix}-form .error-message`).forEach(error => {
+                error.style.display = 'none';
+            });
+            document.querySelectorAll(`#${prefix}-form .form-input`).forEach(input => {
+                input.classList.remove('error');
+            });
+        }
+
+        function submitKateringRegistration(data) {
+            const submitBtn = document.getElementById('katering-submit');
+            showButtonLoading(submitBtn);
+            
+            setTimeout(() => {
+                hideButtonLoading(submitBtn);
+                showToast('KATERING registration successful! Redirecting...', 'success');
+                
+                setTimeout(() => {
+                    window.location.href = '../';
+                }, 2000);
+            }, 3000);
+        }
+
+        function submitHousingRegistration(data) {
+            const submitBtn = document.getElementById('housing-submit');
+            showButtonLoading(submitBtn);
+            
+            setTimeout(() => {
+                hideButtonLoading(submitBtn);
+                showToast('Housing registration successful! Redirecting...', 'success');
+                
+                setTimeout(() => {
+                    window.location.href = '../';
+                }, 2000);
+            }, 3000);
+        }
+
+        function showButtonLoading(button) {
+            button.classList.add('loading');
+            button.disabled = true;
+        }
+
+        function hideButtonLoading(button) {
+            button.classList.remove('loading');
+            button.disabled = false;
+        }
+
+        // Language switching
+        function setLanguage(lang) {
+            const body = document.body;
+            const isRTL = lang === 'ar';
+            
+            if (isRTL) {
+                body.classList.add('rtl');
+                body.setAttribute('dir', 'rtl');
+            } else {
+                body.classList.remove('rtl');
+                body.setAttribute('dir', 'ltr');
+            }
+            
+            // Update flag visibility
+            document.querySelectorAll('.flag').forEach(flag => {
+                flag.style.opacity = '0.5';
+            });
+            
+            // Find and highlight the clicked flag
+            const flags = document.querySelectorAll('.flag');
+            flags.forEach(flag => {
+                if (flag.onclick.toString().includes(`'${lang}'`)) {
+                    flag.style.opacity = '1';
+                }
+            });
+            
+            // Show appropriate language name
+            let langName = lang.toUpperCase();
+            if (lang === 'ar') langName = 'العربية';
+            if (lang === 'id') langName = 'Bahasa Indonesia';
+            if (lang === 'en') langName = 'English';
+            
+            showToast(`Language changed to ${langName}`, 'success', 2000);
+        }
+
         // Welcome message
         setTimeout(() => {
-            showToast('Welcome to Hajj Demo Platform!', 'success', 3000);
+            showToast('Welcome to Ithraa Alkhair Platform!', 'success', 3000);
         }, 500);
     </script>
 </body>
