@@ -45,6 +45,10 @@
             gap: 15px;
         }
 
+        .mobile-menu-btn {
+            display: none;
+        }
+
         .logo {
             width: 40px;
             height: 40px;
@@ -490,6 +494,10 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
             .sidebar {
                 transform: translateX(-100%);
             }
@@ -1269,8 +1277,7 @@
     <div class="header">
         <div class="header-left">
             <div class="logo">H</div>
-            <button class="icon-btn" onclick="toggleSidebar()">☰</button>
-            <button class="icon-btn">⛶</button>
+            <button class="icon-btn mobile-menu-btn" onclick="toggleSidebar()">☰</button>
         </div>
         <div class="header-right">
             <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjRkYwMDAwIi8+Cjx0ZXh0IHg9IjE1IiB5PSIxNCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SUQ8L3RleHQ+Cjwvc3ZnPgo=" class="flag" onclick="setLanguage('id')" title="Indonesian">
@@ -1820,7 +1827,8 @@
         }
 
         function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('collapsed');
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
         }
 
         function logout() {
