@@ -12,31 +12,60 @@
             box-sizing: border-box;
         }
 
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         @font-face {
             font-family: 'CodecPro';
-            src: url('../Fonts/CodecPro.zip') format('truetype');
+            src: url('https://ithraahousing.k.frappe.cloud/files/CodecPro-Regular.otf') format('opentype');
             font-weight: normal;
             font-style: normal;
         }
         
         @font-face {
-            font-family: 'FFShamel';
-            src: url('../Fonts/ArbFONTS-FFShamelFamily-SansOneBook.ttf') format('truetype');
+            font-family: 'CodecPro';
+            src: url('https://ithraahousing.k.frappe.cloud/files/CodecPro-Bold.otf') format('opentype');
+            font-weight: bold;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('https://ithraahousing.k.frappe.cloud/files/Montserrat-Regular.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
         
         @font-face {
-            font-family: 'FFShamel';
-            src: url('../Fonts/ArbFONTS-FFShamelFamily-SansOneBold.ttf') format('truetype');
+            font-family: 'Montserrat';
+            src: url('https://ithraahousing.k.frappe.cloud/files/Montserrat-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('https://ithraahousing.k.frappe.cloud/files/Montserrat-Arabic-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('https://ithraahousing.k.frappe.cloud/files/Montserrat-Arabic-Bold.ttf') format('truetype');
             font-weight: bold;
             font-style: normal;
         }
         
         body {
-            font-family: 'CodecPro', 'FFShamel', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #008086 0%, #00B5A4 100%);
-            min-height: 100vh;
+            font-family: 'CodecPro', 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* background: linear-gradient(135deg, #008086 0%, #00B5A4 100%); */
+            background-color: #ffffff;
+            /* background-repeat: no-repeat; */
+            /* background-image: url(https://ithraahousing.k.frappe.cloud/files/IthraaBG.jpg); */
+            /* background-size: cover;            min-height: 100vh; */
+            height: max-content;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -114,6 +143,7 @@
             position: relative;
             overflow: hidden;
             margin-top: 80px;
+            box-sizing: border-box;
         }
 
         .login-container::before {
@@ -193,6 +223,8 @@
 
         .form-group {
             margin-bottom: 20px;
+            box-sizing: border-box;
+            width: 100%;
         }
 
         .form-label {
@@ -211,6 +243,8 @@
             font-size: 16px;
             transition: all 0.3s ease;
             background: #f8f9fa;
+            box-sizing: border-box;
+            max-width: 100%;
         }
 
         .form-input:focus {
@@ -258,26 +292,27 @@
         }
 
         .login-btn.loading {
-            color: transparent;
+            position: relative;
+            color: white;
         }
 
         .login-btn.loading::after {
             content: '';
             position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
+            right: 15px;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
             border: 2px solid transparent;
-            border-top: 2px solid currentColor;
+            border-top: 2px solid white;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
 
         @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(360deg); }
         }
 
         .remember-forgot {
@@ -626,7 +661,7 @@
 
             .login-container {
                 padding: 30px 25px;
-                margin: 0;
+                margin: 100px 10px;
                 border-radius: 16px;
             }
 
@@ -742,7 +777,6 @@
             </div>
         </div>
         <div class="header-right">
-            <img src="https://ithraahousing.k.frappe.cloud/files/indonesia-flag.png" class="flag" onclick="setLanguage('id')" title="Indonesian">
             <img src="https://ithraahousing.k.frappe.cloud/files/united-states.png" class="flag" onclick="setLanguage('en')" title="English">
             <img src="https://ithraahousing.k.frappe.cloud/files/saudi-arabia.png" class="flag" onclick="setLanguage('ar')" title="Arabic">
         </div>
@@ -777,7 +811,7 @@
                             <input type="checkbox" class="checkbox" id="remember">
                             <label for="remember" class="checkbox-label">Remember me</label>
                         </div>
-                        <a href="#" class="forgot-link" onclick="showForgotPassword()">Forgot Password?</a>
+                        <!-- <a href="#" class="forgot-link" onclick="showForgotPassword()">Forgot Password?</a> -->
                     </div>
 
                     <button type="submit" class="login-btn" id="login-btn">
@@ -785,13 +819,13 @@
                     </button>
                 </form>
 
-                <div class="demo-credentials">
+                <!-- <div class="demo-credentials">
                     <div class="demo-title">Demo Credentials</div>
                     <div class="demo-info">
                         <strong>Email:</strong> admin@hajjdemo.com<br>
                         <strong>Password:</strong> demo123
-                    </div>
-                </div>
+                    </div> -->
+                <!-- </div> -->
 
                 <div class="auth-switch">
                     <p>Don't have an account? <a href="#" onclick="showRegister()" class="switch-link">Register here</a></p>
@@ -999,6 +1033,9 @@
         </div>
 
     <script>
+        // Global variables
+        let selectedService = null;
+
         // Toast Notification System
         function showToast(message, type = 'info', duration = 4000) {
             const toastContainer = document.getElementById('toast-container');
@@ -1093,7 +1130,7 @@
                     
                     setTimeout(() => {
                         // Redirect to main application
-                        window.location.href = '../';
+                        window.location.href = './home';
                     }, 1500);
                 } else {
                     showToast('Invalid email or password', 'error');
@@ -1112,7 +1149,6 @@
         document.querySelector('.demo-credentials').addEventListener('click', function() {
             document.getElementById('email').value = 'admin@hajjdemo.com';
             document.getElementById('password').value = 'demo123';
-            showToast('Demo credentials filled!', 'success', 2000);
         });
 
         // Clear errors on input
@@ -1125,12 +1161,10 @@
         });
 
         // Registration System
-        let selectedService = null;
 
         function showRegister() {
             document.getElementById('login-section').classList.add('hidden');
             document.getElementById('register-section').classList.remove('hidden');
-            showToast('Select your service type to continue', 'info', 3000);
         }
 
         function showLogin() {
@@ -1158,7 +1192,6 @@
                 document.getElementById('housing-form-step').classList.remove('hidden');
             }
             
-            showToast(`${service.toUpperCase()} registration form loaded`, 'success', 2000);
         }
 
         function goBackToServiceSelection() {
@@ -1189,7 +1222,6 @@
             });
             
             selectedService = null;
-            showToast('Select your service type', 'info', 2000);
         }
 
         function resetRegistration() {
@@ -1404,7 +1436,7 @@
                 showToast('KATERING registration successful! Redirecting...', 'success');
                 
                 setTimeout(() => {
-                    window.location.href = '../';
+                    window.location.href = '/home';
                 }, 2000);
             }, 3000);
         }
@@ -1418,7 +1450,7 @@
                 showToast('Housing registration successful! Redirecting...', 'success');
                 
                 setTimeout(() => {
-                    window.location.href = '../';
+                    window.location.href = '/home'
                 }, 2000);
             }, 3000);
         }
@@ -1465,13 +1497,9 @@
             if (lang === 'id') langName = 'Bahasa Indonesia';
             if (lang === 'en') langName = 'English';
             
-            showToast(`Language changed to ${langName}`, 'success', 2000);
         }
 
-        // Welcome message
-        setTimeout(() => {
-            showToast('Welcome to Ithraa Alkhair Platform!', 'success', 3000);
-        }, 500);
+        
     </script>
 </body>
 </html>
